@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — ALMA SHADES, Accra, Ghana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Paystack Inline SDK for MTN MoMo, Telecel Cash & Card payments -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <style>
+    :root {
+      --bg: #f4fafe;
+      --surface: #e4f2fc;
+      --surface-alt: #cde7f9;
+      --card-bg: #ffffff;
+      --text: #052236;
+      --muted: #35607d;
+      --sea: #0284c7;
+      --sea-deep: #0369a1;
+      --sea-dark: #052236;
+      --sea-bright: #38bdf8;
+      --border: #b9dcf4;
+      --glass: rgba(244, 250, 254, 0.94);
+      --danger: #b42318;
+      --success: #067647;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --shadow-sm: 0 4px 14px rgba(5, 34, 54, 0.05);
+      --shadow-md: 0 14px 32px rgba(2, 132, 199, 0.13);
+      --shadow-lg: 0 24px 48px rgba(5, 34, 54, 0.17);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 6%, rgba(56, 189, 248, 0.14), transparent 34%),
+        radial-gradient(circle at 52% 24%, rgba(2, 132, 199, 0.08), transparent 42%),
+        var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-align: left;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    img, svg { display: block; max-width: 100%; }
+
+    /* Full-page responsive rail */
+    .left-stunted-rail {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-left: clamp(1.25rem, 3vw, 3rem);
+      padding-right: clamp(1.25rem, 3vw, 3rem);
+      text-align: left;
+    }
+
+    /* Top Sea-Blue Announcement Bar */
+    .top-bar {
+      background: var(--sea-dark);
+      color: #e0f2fe;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.5rem 0;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(186, 230, 253, 0.14);
+    }
+
+    /* Static Header so scrolling never traps content underneath */
+    header {
+      border-bottom: 1px solid var(--border);
+      position: static;
+      background: var(--glass);
+      z-index: 10;
+    }
+
+    .nav-container {
+      width: 100%;
+      padding: 1.1rem 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.5rem;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Big, Stylish ALMA SHADES Brand Mark */
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(3rem, 6vw, 4.6rem);
+      line-height: 0.82;
+      color: var(--sea-dark);
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+      display: inline-block;
+      text-shadow: 0 10px 28px rgba(2, 132, 199, 0.18);
+      position: relative;
+    }
+
+    .logo::after {
+      content: "";
+      display: block;
+      width: 72%;
+      height: 4px;
+      margin-top: 0.28rem;
+      background: linear-gradient(90deg, var(--sea-bright), var(--sea-deep));
+    }
+
+    .logo .shades-word {
+      background: linear-gradient(125deg, var(--sea) 0%, var(--sea-deep) 55%, var(--sea-bright) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 0.065em;
+    }
+
+    .logo-tag {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sea-deep);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.24rem 0.62rem;
+      border-radius: 999px;
+      vertical-align: middle;
+    }
+
+    /* Left-side stacked list for Nav + Account/Cart/Admin */
+    .left-menu-stack {
+      display: flex;
+      flex: 1 1 720px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.85rem 1.25rem;
+      width: auto;
+      max-width: none;
+      padding: 0.65rem 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    nav { width: auto; }
+
+    nav > ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.15rem 0.25rem;
+      align-items: center;
+      justify-content: flex-end;
+      width: auto;
+    }
+
+    nav li { position: relative; width: 100%; }
+
+    nav a.link {
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      padding: 0.34rem 0.55rem;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+    }
+
+    nav a.link:hover, nav a.link.active {
+      background: var(--surface);
+      color: var(--sea-deep);
+      padding-left: 0.75rem;
+    }
+
+    .drop {
+      display: none;
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.35rem 0.25rem;
+      margin-top: 0.25rem;
+      list-style: none;
+      z-index: 30;
+      text-align: left;
+    }
+
+    nav li:hover .drop,
+    nav li:focus-within .drop {
+      display: block;
+    }
+
+    .drop a {
+      display: block;
+      padding: 0.38rem 0.65rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      border-radius: 6px;
+    }
+
+    .drop a:hover {
+      background: var(--surface);
+      color: var(--sea-deep);
+      padding-left: 0.8rem;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-direction: row;
+      gap: 0.45rem;
+      align-items: center;
+      justify-content: flex-end;
+      width: auto;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .header-actions button { width: auto; }
+
+    button {
+      border: 1px solid var(--sea);
+      background: linear-gradient(135deg, var(--sea), var(--sea-deep));
+      color: #fff;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    button.secondary {
+      background: var(--bg);
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: none;
+    }
+
+    button.secondary:hover {
+      background: var(--surface);
+      border-color: var(--sea);
+    }
+
+    button.admin-btn {
+      background: var(--sea-dark);
+      border-color: var(--sea-dark);
+      color: #e0f2fe;
+    }
+
+    button.admin-btn:hover {
+      background: var(--sea-deep);
+      border-color: var(--sea-deep);
+    }
+
+    main {
+      width: 100%;
+      padding: 1.35rem 0 1.8rem;
+      text-align: left;
+    }
+
+    /* Stylish Hero Showcase — side-by-side so text NEVER covers the photo */
+    .hero-showcase {
+      display: grid;
+      grid-template-columns: 1.15fr 0.9fr;
+      width: 100%;
+      background: linear-gradient(125deg, #041c2d 0%, var(--sea-dark) 45%, var(--sea-deep) 80%, var(--sea) 100%);
+      color: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 1.45rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(186, 230, 253, 0.24);
+    }
+
+    .hero-copy {
+      padding: 1.85rem 1.65rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .hero-pill {
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(186, 230, 253, 0.35);
+      color: #e0f2fe;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.72rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-brand-display {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 6.3vw, 5.2rem);
+      font-weight: 700;
+      line-height: 0.78;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      color: #ffffff;
+      text-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+      white-space: nowrap;
+    }
+
+    .hero-brand-display .brand-a,
+    .hero-brand-display .brand-s {
+      display: inline-block;
+      font-size: 1.42em;
+      line-height: 0.72;
+      font-style: italic;
+      color: var(--sea-bright);
+      transform: scaleX(.76);
+      transform-origin: bottom;
+      margin-right: -0.075em;
+      margin-left: -0.035em;
+      text-shadow: 0 10px 28px rgba(56, 189, 248, 0.32);
+    }
+
+    .hero-brand-display .brand-rest {
+      display: inline-block;
+      transform: scaleX(.92);
+      transform-origin: left;
+    }
+
+    .hero-brand-display em {
+      font-style: normal;
+      color: #ffffff;
+    }
+
+    .hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.3vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      color: #e0f2fe;
+      margin-bottom: 0.65rem;
+      text-align: left;
+    }
+
+    .hero-copy p {
+      color: #cbe9fc;
+      font-size: 0.88rem;
+      margin-bottom: 1.15rem;
+      max-width: 420px;
+      text-align: left;
+    }
+
+    .hero-copy .hero-cta {
+      background: #ffffff;
+      color: var(--sea-dark);
+      border-color: #ffffff;
+      padding: 0.64rem 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 9px;
+    }
+
+    .hero-copy .hero-cta:hover { background: var(--surface-alt); }
+
+    .hero-visual {
+      min-height: 330px;
+      background: var(--sea-deep);
+      overflow: hidden;
+      display: block;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 330px;
+      object-fit: cover;
+      object-position: center 28%;
+    }
+
+    /* Compact Left-Aligned Category Strip */
+    .category-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 0.55rem;
+      margin-bottom: 1.45rem;
+    }
+
+    .cat-tile {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.62rem 0.85rem;
+      min-width: 132px;
+      text-align: left;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.12rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cat-tile span {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--sea);
+      font-weight: 800;
+    }
+
+    .cat-tile strong { font-size: 0.84rem; font-weight: 800; }
+
+    .cat-tile.active, .cat-tile:hover {
+      border-color: var(--sea);
+      background: var(--surface);
+    }
+
+    .cat-tile.active {
+      background: linear-gradient(135deg, var(--sea), var(--sea-deep));
+      color: #fff;
+      border-color: var(--sea-deep);
+    }
+
+    .cat-tile.active span { color: #e0f2fe; }
+
+    /* Lookbook & Custom Story Cards — Text sits BELOW the picture so nothing covers the photo */
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.65rem;
+      width: 100%;
+    }
+
+    .look-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      cursor: pointer;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .look-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--sea);
+      box-shadow: var(--shadow-md);
+    }
+
+    .look-photo {
+      width: 100%;
+      height: 195px;
+      overflow: hidden;
+      background: #f7fafc;
+      perspective: 900px;
+      position: relative;
+    }
+
+    .look-photo::after,
+    .card-img::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 24%;
+      right: 18%;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 10px 3px rgba(255,255,255,.9), 12px 14px 8px 1px rgba(255,255,255,.55);
+      pointer-events: none;
+    }
+
+    .look-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      padding: 0.15rem;
+      background: #f7fafc;
+      filter: saturate(1.18) contrast(1.04) drop-shadow(0 10px 10px rgba(5,34,54,.18));
+      transform: scale(1.28);
+      animation: none;
+      transition: transform 0.3s ease;
+    }
+
+    .look-card:hover .look-photo img { transform: scale(1.34); }
+
+    .look-caption {
+      padding: 0.9rem 1rem;
+      background: #ffffff;
+      border-top: 1px solid var(--surface);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .look-caption small {
+      color: var(--sea);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-size: 0.65rem;
+    }
+
+    .look-caption h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--sea-dark);
+      line-height: 1.15;
+    }
+
+    .look-caption p {
+      font-size: 0.81rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* Toolbar & Search */
+    .toolbar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.1rem;
+      margin-bottom: 1.15rem;
+      text-align: left;
+    }
+
+    .toolbar h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--sea-dark);
+    }
+
+    .search-input {
+      font-family: var(--font-body);
+      padding: 0.5rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 0.86rem;
+      min-width: 230px;
+      background: #fff;
+      color: var(--text);
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--sea);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.14);
+    }
+
+    /* Product Grid — clean photo on top, badge + write-up cleanly underneath */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      justify-content: stretch;
+      gap: clamp(0.8rem, 1.5vw, 1.35rem);
+      width: 100%;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.85rem;
+      background: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 0.7rem;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--sea);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img {
+      aspect-ratio: 4 / 3;
+      min-height: 210px;
+      background: #f7fafc;
+      border-radius: 10px;
+      overflow: hidden;
+      perspective: 900px;
+      position: relative;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      padding: 0.1rem;
+      background: #f7fafc;
+      filter: saturate(1.18) contrast(1.04) drop-shadow(0 10px 10px rgba(5,34,54,.18));
+      transform: scale(1.02);
+      animation: none;
+      transition: transform 0.12s ease;
+      cursor: grab;
+    }
+
+    .card-img.is-dragging,
+    .card-img.is-dragging img,
+    .image-viewer-stage.is-dragging img {
+      cursor: grabbing;
+    }
+
+    .card-img.is-dragging img {
+      animation: none;
+    }
+
+    .card:hover .card-img:not(.is-dragging) img { transform: scale(1.08); }
+
+    @keyframes lensSweep {
+      0%, 12% { left: -18%; opacity: 0; }
+      28% { opacity: 0.9; }
+      48%, 62% { left: 112%; opacity: 0.8; }
+      78% { opacity: 0; }
+      100% { left: 112%; opacity: 0; }
+    }
+
+
+    .card-img::before {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      bottom: 0.55rem;
+      transform: translateX(-50%);
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(5,34,54,.82);
+      color: #fff;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      pointer-events: none;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 0 0 1.35rem;
+    }
+
+    .trust-item {
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .trust-item strong { display: block; font-family: var(--font-display); color: var(--sea-dark); }
+    .trust-item span { color: var(--muted); font-size: 0.78rem; }
+
+    @media (max-width: 680px) {
+      .trust-strip { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .look-photo img,
+      .card-img img { animation: none; }
+    }
+
+    .card-tags-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .badge {
+      background: var(--sea-dark);
+      color: #f0f9ff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.52rem;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .share-icon {
+      background: var(--bg);
+      color: var(--sea-dark);
+      border: 1px solid var(--border);
+      padding: 0.18rem 0.48rem;
+      font-size: 0.64rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 5px;
+      box-shadow: none;
+    }
+
+    .card-body { text-align: left; }
+
+    .card-meta {
+      font-size: 0.66rem;
+      color: var(--sea);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: block;
+    }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0.15rem 0 0.25rem;
+      color: var(--sea-dark);
+      line-height: 1.15;
+    }
+
+    .card-desc { font-size: 0.81rem; color: var(--muted); }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--surface);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      margin-top: 2.25rem;
+      padding: 1.85rem 0 1.35rem;
+      text-align: left;
+    }
+
+    .footer-grid {
+      width: 100%;
+      margin: 0 0 1.35rem 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(160px, 1fr));
+      gap: 1.25rem 1.5rem;
+    }
+
+    footer h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--sea-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    footer ul { list-style: none; }
+
+    footer li {
+      margin-bottom: 0.35rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--muted);
+      min-height: 1.1rem;
+    }
+
+    footer a:hover { color: var(--sea); text-decoration: underline; }
+
+    .copyright {
+      width: 100%;
+      margin: 0;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* Individual Product Viewer */
+    .image-viewer-modal {
+      max-width: min(920px, 94vw);
+      width: min(920px, 94vw);
+      padding: 0.8rem;
+    }
+
+    .image-viewer-stage {
+      height: min(68vh, 620px);
+      background: #f7f8fa;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      perspective: 1000px;
+      position: relative;
+      touch-action: pan-x pan-y;
+    }
+
+    .image-viewer-stage.dark { background: #111827; }
+
+    .image-viewer-stage img {
+      max-width: 94%;
+      max-height: 94%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: saturate(1.2) contrast(1.06) drop-shadow(0 18px 18px rgba(5,34,54,.22));
+      transform: scale(var(--viewer-scale, 1));
+      transition: transform 0.16s ease;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .viewer-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.65rem;
+      justify-content: center;
+    }
+
+    .card-img img,
+    .look-photo img,
+    .hero-visual img {
+      cursor: zoom-in;
+    }
+
+    .spin-product-image {
+      transition: opacity 0.12s ease, transform 0.12s ease;
+      object-fit: contain;
+    }
+
+    .spin-product-image.frame-changing {
+      opacity: 0.15;
+      transform: scale(.88);
+    }
+
+    /* Modals */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 28, 45, 0.58);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 40;
+      padding: 1rem 1.25rem;
+    }
+
+    .overlay.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.45rem;
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      text-align: left;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--sea-dark);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .tab-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.38rem 0.75rem;
+      font-size: 0.78rem;
+      box-shadow: none;
+    }
+
+    .tab-btn.active { background: var(--sea); color: #fff; border-color: var(--sea); }
+
+    .form-group { margin-bottom: 0.8rem; text-align: left; }
+
+    .form-group label { display: block; font-size: 0.82rem; margin-bottom: 0.28rem; font-weight: 700; }
+
+    .form-group input, .form-group select, .form-group textarea {
+      font-family: var(--font-body);
+      width: 100%;
+      padding: 0.55rem 0.68rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    .form-group textarea {
+      min-height: 76px;
+      resize: vertical;
+    }
+
+    .preview-thumb {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-top: 0.45rem;
+      display: none;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      gap: 0.6rem;
+    }
+
+    .payment-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.95rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.48rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .status-msg {
+      margin-top: 0.7rem;
+      padding: 0.6rem;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: none;
+      text-align: left;
+    }
+
+    .status-msg.success { display: block; background: #ecfdf3; color: var(--success); border: 1px solid #abefc6; }
+    .status-msg.error { display: block; background: #fef3f2; color: var(--danger); border: 1px solid #fecdca; }
+
+    .admin-stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .admin-stat-box span {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .admin-stat-box strong {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--sea-dark);
+    }
+
+    /* Cookie Banner anchored left */
+    .cookie-banner {
+      position: fixed;
+      bottom: 1rem;
+      left: 1.25rem;
+      max-width: 560px;
+      width: calc(100% - 2.5rem);
+      margin: 0;
+      background: #fff;
+      border: 1px solid var(--sea);
+      box-shadow: var(--shadow-lg);
+      border-radius: 12px;
+      padding: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.65rem;
+      z-index: 35;
+      text-align: left;
+    }
+
+    .cookie-banner p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      flex: 1 1 260px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 980px) {
+      .nav-container { align-items: flex-start; }
+      .left-menu-stack { flex-direction: column; align-items: flex-start; }
+      nav { width: 100%; }
+      nav > ul { justify-content: flex-start; }
+      .header-actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 680px) {
+      .hero-showcase { grid-template-columns: 1fr; }
+      .lookbook-grid, .footer-grid { grid-template-columns: 1fr; }
+      .left-menu-stack { flex-basis: 100%; }
+      nav > ul { flex-direction: column; align-items: flex-start; }
+      nav li { width: 100%; }
+      .header-actions { flex-wrap: wrap; }
+      .card-img { min-height: 190px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="left-stunted-rail">
+      ALMA SHADES &bull; SEA-BLUE EYE CARE COLLECTION &bull; ACCRA, GHANA
+    </div>
+  </div>
+
+  <header>
+    <div class="left-stunted-rail">
+      <div class="nav-container">
+        <div class="brand-row">
+          <a href="#" class="logo">ALMA <span class="shades-word">SHADES</span></a>
+          <span class="logo-tag">Accra, Ghana</span>
+        </div>
+
+        <div class="left-menu-stack">
+          <nav aria-label="Main navigation">
+            <ul>
+              <li><a href="#shop" class="link active" onclick="filterByCategory('all')">Home</a></li>
+              <li><a href="#about" class="link" onclick="openInfoModal('About ALMA SHADES', 'Owned and operated by ALMA SHADES in Accra, Ghana, we craft UV400 polarized, blue-light protective, photochromic, sport, and classic eyewear built for clarity and comfort.')">About</a></li>
+              <li><a href="#shop" class="link" onclick="filterByCategory('all')">Shop</a></li>
+              <li class="has-drop">
+                <a href="#collections" class="link">Collections &#9662;</a>
+                <ul class="drop">
+                  <li><a href="#collections" onclick="filterByCategory('Sun Shades')">Sun Shades</a></li>
+                  <li><a href="#collections" onclick="filterByCategory('Blue-Light')">Blue-Light Care</a></li>
+                  <li><a href="#collections" onclick="filterByCategory('Photochromic')">Photochromic</a></li>
+                  <li><a href="#collections" onclick="filterByCategory('Sport & Active')">Sport &amp; Active</a></li>
+                  <li><a href="#collections" onclick="filterByCategory('Classic & Vintage')">Classic &amp; Vintage</a></li>
+                </ul>
+              </li>
+                  <li><a href="#contact" class="link">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="header-actions">
+            <button class="secondary" id="accountBtn" onclick="openAccountModal('login')">Login</button>
+            <button id="openCartBtn" onclick="openCartModal()">Cart (<span id="cartCount">0</span>)</button>
+            <button class="admin-btn" id="adminBtn" onclick="openAdminModal()">Admin Control</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="shop">
+    <div class="left-stunted-rail">
+      <!-- Stylish Sea-Blue Hero Showcase (Text beside photo, never covering it) -->
+      <section class="hero-showcase">
+        <div class="hero-copy">
+          <span class="hero-pill">Accra, Ghana &bull; Sea-Blue Vision</span>
+          <div class="hero-brand-display"><span class="brand-a">A</span><span class="brand-rest">LM</span><span class="brand-rest">A</span> <em><span class="brand-s">S</span><span class="brand-rest">HADES</span></em></div>
+          <h1>Sharp Sight. Zero Glare. Bold Style.</h1>
+          <p>
+            Signature sea-blue frames with UV400 polarized sun lenses, photochromic transitions, sport wraps, and blue-light protection.
+          </p>
+          <button class="hero-cta" onclick="document.getElementById('collections').scrollIntoView({behavior: 'smooth'})">
+            Browse Shades
+          </button>
+        </div>
+        <div class="hero-visual">
+          <img
+            src="https://images.pexels.com/photos/26558313/pexels-photo-26558313.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="A heartwarming outdoor portrait of a father and daughter sharing a loving embrace and smiles"
+            onerror="this.replaceWith(createEyewearFallback('Family eye care, together', '#052236', '#38bdf8'))"
+          />
+        </div>
+      </section>
+
+      <!-- Category Filter Strip -->
+      <div class="category-strip" id="collections" role="tablist" aria-label="Eyewear categories">
+        <button class="cat-tile active" data-category="all">
+          <span>Browse All</span>
+          <strong>All Alma Shades</strong>
+        </button>
+        <button class="cat-tile" data-category="Sun Shades">
+          <span>UV400 Shield</span>
+          <strong>Sun Shades</strong>
+        </button>
+        <button class="cat-tile" data-category="Blue-Light">
+          <span>Screen Defense</span>
+          <strong>Blue-Light Care</strong>
+        </button>
+        <button class="cat-tile" data-category="Photochromic">
+          <span>Smart Tint</span>
+          <strong>Photochromic</strong>
+        </button>
+        <button class="cat-tile" data-category="Sport & Active">
+          <span>High-Grip</span>
+          <strong>Sport &amp; Active</strong>
+        </button>
+        <button class="cat-tile" data-category="Classic & Vintage">
+          <span>Timeless Cut</span>
+          <strong>Classic &amp; Vintage</strong>
+        </button>
+      </div>
+
+      <!-- Lookbook & Story Showcase (Rendered dynamically; text sits BELOW every photo) -->
+      <div class="lookbook-grid" id="lookbookGrid"></div>
+
+      <!-- Trust & Eye-Care Highlights -->
+      <div class="trust-strip" aria-label="Customer service highlights">
+        <div class="trust-item"><strong>Clear Vision Promise</strong><span>UV and screen protection options</span></div>
+        <div class="trust-item"><strong>Accra Delivery</strong><span>Convenient local order fulfillment</span></div>
+        <div class="trust-item"><strong>Secure Checkout</strong><span>Paystack or pay on delivery</span></div>
+      </div>
+
+      <!-- Toolbar & Search -->
+      <div class="toolbar">
+        <h2>Featured High-End Eyewear</h2>
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search shades, silhouettes, or categories..."
+          aria-label="Search Alma Shades"
+        />
+      </div>
+
+      <div class="grid" id="productGrid"></div>
+    </div>
+  </main>
+
+  <!-- Multi-Column Footer (Accra, Ghana; Email & Phone Left Blank) -->
+  <footer>
+    <div class="left-stunted-rail">
+      <div class="footer-grid">
+        <div id="contact">
+          <h3>ALMA SHADES</h3>
+          <ul>
+            <li>Accra, Ghana</li>
+            <li aria-label="Email address"></li>
+            <li aria-label="Phone number"></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Customer service</h3>
+          <ul>
+            <li><a onclick="openAccountModal('orders')">Orders</a></li>
+            <li><a onclick="openAccountModal('downloads')">Downloads</a></li>
+            <li><a onclick="openAccountModal('addresses')">Addresses</a></li>
+            <li><a onclick="openAccountModal('details')">Account details</a></li>
+            <li><a onclick="openAccountModal('lost')">Lost password</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Delivery</h3>
+          <ul>
+            <li><a onclick="openInfoModal('How it works', 'Dispatch across Accra, Ghana with scheduled delivery windows and order tracking under Customer Account > Orders.')">How it works</a></li>
+            <li><a onclick="openInfoModal('Free Delivery', 'Delivery options available across Accra, Ghana on eligible ALMA SHADES orders.')">Free Delivery</a></li>
+            <li><a onclick="openInfoModal('FAQ', 'Review your order status anytime inside Customer Account > Orders.')">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Useful links</h3>
+          <ul>
+            <li><a onclick="openInfoModal('Contact us', 'Location: Accra, Ghana. Official email and phone details will be updated once finalized.')">Contact us</a></li>
+            <li><a onclick="openInfoModal('Shipping & Returns', 'Unworn frames in original condition can be exchanged within 7 days of delivery.')">Shipping &amp; Returns</a></li>
+            <li><a onclick="openInfoModal('Refund Policy', 'Eligible refunds are processed back to your original payment method after inspection.')">Refund Policy</a></li>
+            <li><a onclick="openCookieModal()">Cookie Preferences</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>&copy; 2026 ALMA SHADES &bull; Accra, Ghana &bull; All Rights Reserved</span>
+        <span>Sea-Blue Edition &bull; Paystack Secured</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Control Modal (Only Almashades / almashades2026) -->
+  <div class="overlay" id="adminModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>ALMA SHADES — Admin Control</h3>
+        <button class="secondary" onclick="closeModal('adminModal')">&#10005;</button>
+      </div>
+      <div id="adminContent"></div>
+    </div>
+  </div>
+
+  <!-- Customer Account Modal -->
+  <div class="overlay" id="accountModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Customer Account</h3>
+        <button class="secondary" onclick="closeModal('accountModal')">&#10005;</button>
+      </div>
+      <div class="tabs" id="authTabs">
+        <button class="tab-btn active" onclick="switchAccountTab('login')">Login</button>
+        <button class="tab-btn" onclick="switchAccountTab('register')">Create Account</button>
+        <button class="tab-btn" onclick="switchAccountTab('lost')">Lost Password</button>
+        <button class="tab-btn" onclick="switchAccountTab('orders')">Orders</button>
+        <button class="tab-btn" onclick="switchAccountTab('addresses')">Addresses</button>
+      </div>
+      <div id="accountTabContent"></div>
+    </div>
+  </div>
+
+  <!-- Cart & Payment Checkout Modal -->
+  <div class="overlay" id="cartModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Your Cart &amp; Checkout</h3>
+        <button class="secondary" onclick="closeModal('cartModal')">&#10005;</button>
+      </div>
+
+      <div id="cartItems"></div>
+
+      <div class="payment-box">
+        <h4 style="font-size: 0.94rem; font-weight: 800; margin-bottom: 0.65rem;">Customer &amp; Payment Details</h4>
+        <div class="form-group">
+          <label for="custName">Full Name *</label>
+          <input type="text" id="custName" placeholder="" required />
+        </div>
+        <div class="form-group">
+          <label for="custEmail">Email Address *</label>
+          <input type="email" id="custEmail" placeholder="" required />
+        </div>
+        <div class="form-group">
+          <label for="custPhone">Phone / MoMo Number *</label>
+          <input type="tel" id="custPhone" placeholder="" required />
+        </div>
+        <div class="form-group">
+          <label for="custAddress">Delivery Location *</label>
+          <input type="text" id="custAddress" value="Accra, Ghana" required />
+        </div>
+
+        <label style="font-size: 0.85rem; font-weight: 800; display: block; margin-bottom: 0.4rem;">Payment Method:</label>
+        <label class="payment-option">
+          <input type="radio" name="payMethod" value="paystack" checked />
+          <span><strong>Paystack</strong> (MTN MoMo, Telecel Cash, AT Money, Visa/Mastercard)</span>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payMethod" value="cod" />
+          <span><strong>Pay on Delivery</strong> (Accra, Ghana Cash / MoMo at doorstep)</span>
+        </label>
+
+        <button style="width: 100%; margin-top: 0.75rem;" onclick="processCheckout()">
+          Complete Order
+        </button>
+        <div id="checkoutStatus" class="status-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Individual Glasses Image Viewer -->
+  <div class="overlay" id="imageViewerModal" aria-hidden="true">
+    <div class="modal image-viewer-modal">
+      <div class="modal-header">
+        <h3 id="imageViewerTitle">Eyewear Preview</h3>
+        <button class="secondary" onclick="closeModal('imageViewerModal')">&#10005;</button>
+      </div>
+      <div class="image-viewer-stage" id="imageViewerStage" onwheel="handleViewerWheel(event)" ondblclick="toggleViewerDoubleZoom()">
+        <img id="imageViewerImage" src="" alt="" />
+      </div>
+      <div class="viewer-controls">
+        <button class="secondary" onclick="stepViewerView(-1)">&#8592; Previous View</button>
+        <button class="secondary" onclick="changeViewerZoom(-0.25)">-</button>
+        <button class="secondary" onclick="resetViewerZoom()">Reset</button>
+        <button onclick="changeViewerZoom(0.25)">+</button>
+        <button class="secondary" onclick="stepViewerView(1)">Next View &#8594;</button>
+        <button class="secondary" id="viewerBackgroundBtn" onclick="toggleViewerBackground()">Black Background</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Modal -->
+  <div class="overlay" id="infoModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="infoTitle">Information</h3>
+        <button class="secondary" onclick="closeModal('infoModal')">&#10005;</button>
+      </div>
+      <p id="infoBody" style="font-size: 0.92rem; color: var(--muted);"></p>
+    </div>
+  </div>
+
+  <!-- Cookie Preferences Modal -->
+  <div class="overlay" id="cookieModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Personalize Your Cookie Preferences</h3>
+        <button class="secondary" onclick="closeModal('cookieModal')">&#10005;</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem;">
+        Manage your cookie choices for ALMA SHADES. Necessary cookies keep your cart and session active.
+      </p>
+      <div class="form-group">
+        <label><input type="checkbox" checked disabled /> <strong>Necessary Cookies</strong> (Always Active)</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="ckFunctional" checked /> <strong>Functional Cookies</strong></label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="ckAnalytical" /> <strong>Analytical Cookies</strong></label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="ckAds" /> <strong>Advertisement Cookies</strong></label>
+      </div>
+      <div style="display: flex; gap: 0.5rem; justify-content: flex-start;">
+        <button onclick="saveCookiePrefs(true)">Save Preferences</button>
+        <button class="secondary" onclick="saveCookiePrefs(false)">Reject All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+    <p>This website uses cookies to improve your experience and keep your ALMA SHADES cart active.</p>
+    <div class="header-actions">
+      <button onclick="saveCookiePrefs(true)">Accept All</button>
+      <button class="secondary" onclick="saveCookiePrefs(false)">Reject All</button>
+      <button class="secondary" onclick="openCookieModal()">Customize</button>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_USERNAME = "Almashades";
+    const ADMIN_PASSWORD = "almashades2026";
+    const PAYSTACK_PUBLIC_KEY = "pk_test_replace_with_your_paystack_public_key";
+    const DEFAULT_PAYSTACK_UNIT_GHS = 250;
+
+    function createEyewearFallback(label, bgHex, accentHex) {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 600 400");
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "100%");
+      svg.innerHTML = `
+        <rect width="600" height="400" fill="#edf7fd" />
+        <ellipse cx="300" cy="195" rx="220" ry="18" fill="#d3eafa" opacity="0.7" />
+        <rect x="95" y="145" width="170" height="112" rx="46" fill="#ffffff" fill-opacity="0.55" stroke="${bgHex}" stroke-width="18" />
+        <rect x="335" y="145" width="170" height="112" rx="46" fill="#ffffff" fill-opacity="0.55" stroke="${bgHex}" stroke-width="18" />
+        <rect x="265" y="188" width="70" height="14" rx="7" fill="${accentHex}" />
+        <path d="M95 175 L35 145 M505 175 L565 145" fill="none" stroke="${bgHex}" stroke-width="16" stroke-linecap="round" />
+        <text x="300" y="320" text-anchor="middle" fill="${bgHex}" font-family="sans-serif" font-size="22" font-weight="700">${label}</text>
+      `;
+      return svg;
+    }
+
+    const defaultLookbook = [
+      {
+        id: 101,
+        tag: "UV400 Polarized",
+        title: "Sun Shades",
+        category: "Sun Shades",
+        story: "Engineered for bright Accra sun with deep sea-blue polarization and zero harsh glare.",
+        image: "https://static.zennioptical.com/production/products/general/32/34/3234014-eyeglasses-front-view.jpg"
+      },
+      {
+        id: 102,
+        tag: "Daily Screen Comfort",
+        title: "Blue-Light Eye Care",
+        category: "Blue-Light",
+        story: "Filters high-energy screen glare so your eyes stay relaxed from morning work to late night.",
+        image: "https://static.zennioptical.com/production/products/general/44/27/4427439-eyeglasses-front-view.jpg"
+      },
+      {
+        id: 103,
+        tag: "Timeless Silhouette",
+        title: "Classic & Vintage",
+        category: "Classic & Vintage",
+        story: "Balanced metallic contours and heritage shapes crafted for effortless everyday wear.",
+        image: "https://static.zennioptical.com/production/products/general/20/26/2026323-eyeglasses-front-view.jpg"
+      },
+      {
+        id: 104,
+        tag: "Indoor to Sunlight",
+        title: "Photochromic",
+        category: "Photochromic",
+        story: "Smart adaptive lenses that stay clear indoors and darken smoothly under direct sunlight.",
+        image: "https://static.zennioptical.com/production/products/general/44/81/4481025-eyeglasses-front-view.jpg"
+      }
+    ];
+
+    const defaultProducts = [
+      {
+        id: 1,
+        name: "Ocean Polarized",
+        category: "Sun Shades",
+        badge: "UV400 Polarized",
+        image: "https://static.zennioptical.com/production/products/general/32/34/3234014-eyeglasses-front-view.jpg",
+        desc: "Cuts harsh coastal and highway glare with crisp sea-tinted polarized lenses."
+      },
+      {
+        id: 2,
+        name: "Tide Clear-Guard",
+        category: "Blue-Light",
+        badge: "Clear Screen Lens",
+        image: "https://static.zennioptical.com/production/products/general/44/27/4427439-eyeglasses-front-view.jpg",
+        desc: "Lightweight Ghana-style browline optical frame for laptop, study, and daily wear."
+      },
+      {
+        id: 3,
+        name: "Reef Round Metal",
+        category: "Classic & Vintage",
+        badge: "Golden Rim",
+        image: "https://static.zennioptical.com/production/products/general/20/26/2026323-eyeglasses-front-view.jpg",
+        desc: "Fine circular metal frame with balanced nose pads and a polished Ghana-market finish."
+      },
+      {
+        id: 4,
+        name: "Horizon Photo-Shift",
+        category: "Photochromic",
+        badge: "Smart Tint",
+        image: "https://static.zennioptical.com/production/products/general/44/60/4460125-eyeglasses-front-view.jpg",
+        desc: "Clear optical lenses indoors that tint naturally as Ghana's bright daylight changes."
+      },
+      {
+        id: 5,
+        name: "Wave Architectural",
+        category: "Sun Shades",
+        badge: "Signature Cut",
+        image: "https://static.zennioptical.com/production/products/general/78/13/7813125-eyeglasses-front-view.jpg",
+        desc: "Full-rim optical profile with bold temples and full UV sun protection."
+      },
+      {
+        id: 6,
+        name: "Coastline Shield",
+        category: "Sport & Active",
+        badge: "Wrap Fit",
+        image: "https://static.zennioptical.com/production/products/general/44/81/4481025-eyeglasses-front-view.jpg",
+        desc: "Full-coverage wrap frame with secure temples for sport and outdoor activity."
+      },
+      {
+        id: 7,
+        name: "Lagoon Heritage",
+        category: "Classic & Vintage",
+        badge: "Timeless",
+        image: "https://static.zennioptical.com/production/products/general/12/95/129521-eyeglasses-front-view.jpg",
+        desc: "Slim oval frame with a timeless everyday profile, popular for optical wear."
+      },
+      {
+        id: 8,
+        name: "Current Studio Lite",
+        category: "Blue-Light",
+        badge: "Featherweight",
+        image: "https://static.zennioptical.com/production/products/general/20/34/2034617-eyeglasses-front-view.jpg",
+        desc: "Slim rectangular optical frame with a clean professional finish for work and study."
+      },
+      {
+        id: 9,
+        name: "Solis Transition Duo",
+        category: "Photochromic",
+        badge: "All-Light",
+        image: "https://static.zennioptical.com/production/products/general/12/52/125221-eyeglasses-front-view.jpg",
+        desc: "Adaptive lenses for moving easily between indoor offices and bright outdoor light."
+      },
+      {
+        id: 10,
+        name: "Velocity Sport Shield",
+        category: "Sport & Active",
+        badge: "Wraparound Sport",
+        image: "https://static.zennioptical.com/production/products/general/78/39/7839625-eyeglasses-front-view.jpg",
+        desc: "Secure sport frame with close-fitting temples and a bold active silhouette."
+      },
+    ];
+
+    const STORAGE_KEYS = {
+      products: "alma_shades_products_v21",
+      lookbook: "alma_shades_lookbook_v21",
+      cart: "alma_shades_cart_v10",
+      user: "alma_shades_user_v10",
+      orders: "alma_shades_orders_v10",
+      cookies: "alma_shades_cookies_v10",
+      adminLoggedIn: "alma_shades_admin_auth_v10"
+    };
+
+    const storedProducts = JSON.parse(localStorage.getItem(STORAGE_KEYS.products));
+    let products = (storedProducts || defaultProducts).filter(
+      (product) => product.category !== "Accessories"
+    );
+    let lookbook = JSON.parse(localStorage.getItem(STORAGE_KEYS.lookbook)) || defaultLookbook;
+    let cart = JSON.parse(localStorage.getItem(STORAGE_KEYS.cart)) || [];
+    let currentUser = JSON.parse(localStorage.getItem(STORAGE_KEYS.user)) || null;
+    let orders = JSON.parse(localStorage.getItem(STORAGE_KEYS.orders)) || [];
+    let isAdminAuthenticated = sessionStorage.getItem(STORAGE_KEYS.adminLoggedIn) === "true";
+    let activeCategory = "all";
+    let uploadedProductDataUrl = "";
+    let uploadedLookbookDataUrl = "";
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(products));
+        localStorage.setItem(STORAGE_KEYS.lookbook, JSON.stringify(lookbook));
+        localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(cart));
+        localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(orders));
+        if (currentUser) {
+          localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(currentUser));
+        } else {
+          localStorage.removeItem(STORAGE_KEYS.user);
+        }
+      } catch (err) {
+        alert("Browser storage limit reached. Try uploading a smaller photo file or pasting an image URL.");
+      }
+    }
+
+    function renderLookbook() {
+      const grid = document.getElementById("lookbookGrid");
+      if (!grid) return;
+
+      grid.innerHTML = lookbook
+        .map(
+          (item) => `
+          <article class="look-card" onclick="filterByCategory('${escapeJs(item.category)}')">
+            <div class="look-photo">
+              <img
+                src="${escapeHtml(item.image)}"
+                alt="${escapeHtml(item.title)}"
+                onclick="openImageViewer('${escapeJs(item.image)}', '${escapeJs(item.title)}')"
+                onerror="this.replaceWith(createEyewearFallback('${escapeJs(item.title)}', '#052236', '#0284c7'))"
+              />
+            </div>
+            <div class="look-caption">
+              <small>${escapeHtml(item.tag)}</small>
+              <h3>${escapeHtml(item.title)}</h3>
+              <p>${escapeHtml(item.story || "")}</p>
+            </div>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      const filtered = products.filter((p) => {
+        const matchesCat = activeCategory === "all" || p.category === activeCategory;
+        const matchesQuery =
+          !query ||
+          p.name.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query) ||
+          p.badge.toLowerCase().includes(query) ||
+          p.desc.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      if (!filtered.length) {
+        grid.innerHTML = "<p style='color: var(--muted);'>No Alma Shades match your filter.</p>";
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map(
+          (p) => `
+          <article class="card">
+            <div>
+              <div class="card-img frame-spin" data-frame="0">
+                <img
+                  class="spin-product-image"
+                  src="${escapeHtml(p.image)}"
+                  data-front="${escapeHtml(p.image)}"
+                  data-angle="${escapeHtml(getZenniView(p.image, 'angle-view'))}"
+                  data-side="${escapeHtml(getZenniView(p.image, 'side-view'))}"
+                  data-tinted="${escapeHtml(getZenniView(p.image, 'tinted-view'))}"
+                  alt="${escapeHtml(p.name)}"
+                  onclick="handleProductImageClick(event, '${escapeJs(p.image)}', '${escapeJs(p.name)}')"
+                  onerror="this.replaceWith(createEyewearFallback('${escapeJs(p.name)}', '#0369a1', '#38bdf8'))"
+                />
+              </div>
+              <div class="card-body" style="margin-top: 0.7rem;">
+                <div class="card-tags-row">
+                  <span class="badge">${escapeHtml(p.badge)}</span>
+                  <button class="share-icon" title="Share shade" onclick="shareProduct(${p.id})">Share</button>
+                </div>
+                <span class="card-meta">${escapeHtml(p.category)}</span>
+                <h3>${escapeHtml(p.name)}</h3>
+                <p class="card-desc">${escapeHtml(p.desc)}</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button onclick="addToCart(${p.id})">Add to Cart</button>
+            </div>
+          </article>
+        `
+        )
+        .join("");
+
+      setupFrameSpin(grid);
+    }
+
+    function getZenniView(src, view) {
+      if (!src.includes("static.zennioptical.com")) return src;
+      return src.replace("-front-view.jpg", `-${view}.jpg`);
+    }
+
+    function setupFrameSpin(container) {
+      const frames = container.querySelectorAll(".frame-spin");
+      frames.forEach((frame) => {
+        const image = frame.querySelector(".spin-product-image");
+        if (!image) return;
+        const views = ["front", "angle", "side", "tinted"];
+        let index = 0;
+        let dragging = false;
+        let startX = 0;
+
+        const showView = (nextIndex) => {
+          index = ((nextIndex % views.length) + views.length) % views.length;
+          frame.dataset.frame = String(index);
+          image.classList.add("frame-changing");
+          window.setTimeout(() => {
+            image.src = image.dataset[views[index]] || image.dataset.front;
+            image.classList.remove("frame-changing");
+          }, 90);
+        };
+
+        const timer = window.setInterval(() => {
+          if (!dragging) showView(index + 1);
+        }, 8000);
+        frame._frameTimer = timer;
+
+        frame.onpointerdown = (event) => {
+          dragging = true;
+          startX = event.clientX;
+          frame.setPointerCapture(event.pointerId);
+        };
+        frame.onpointermove = (event) => {
+          if (!dragging) return;
+          const dx = event.clientX - startX;
+          if (Math.abs(dx) >= 45) {
+            showView(index + (dx > 0 ? -1 : 1));
+            startX = event.clientX;
+          }
+        };
+        frame.onpointerup = () => { dragging = false; };
+        frame.onpointercancel = () => { dragging = false; };
+      });
+    }
+
+    function filterByCategory(category) {
+      activeCategory = category;
+      document.querySelectorAll(".cat-tile").forEach((tile) => {
+        tile.classList.toggle("active", tile.dataset.category === category);
+      });
+      renderProducts();
+    }
+
+    document.querySelectorAll(".cat-tile").forEach((tile) => {
+      tile.addEventListener("click", () => filterByCategory(tile.dataset.category));
+    });
+
+    document.getElementById("searchInput").addEventListener("input", renderProducts);
+
+    function addToCart(productId) {
+      const product = products.find((p) => p.id === productId);
+      if (!product) return;
+      const existing = cart.find((item) => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: product.id, name: product.name, category: product.category, qty: 1 });
+      }
+      saveState();
+      updateCartCount();
+      openCartModal();
+    }
+
+    function updateCartCount() {
+      const total = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("cartCount").textContent = total;
+    }
+
+    function changeQty(productId, delta) {
+      const item = cart.find((i) => i.id === productId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter((i) => i.id !== productId);
+      }
+      saveState();
+      updateCartCount();
+      renderCartItems();
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById("cartItems");
+      if (!cart.length) {
+        container.innerHTML = "<p style='color: var(--muted); padding: 0.5rem 0;'>Your cart is empty.</p>";
+        return;
+      }
+
+      container.innerHTML = cart
+        .map(
+          (item) => `
+          <div class="cart-item">
+            <div>
+              <strong>${escapeHtml(item.name)}</strong><br />
+              <small style="color: var(--muted);">${escapeHtml(item.category)} &bull; Qty: ${item.qty}</small>
+            </div>
+            <div style="display: flex; gap: 0.3rem; align-items: center;">
+              <button class="secondary" onclick="changeQty(${item.id}, -1)">-</button>
+              <button class="secondary" onclick="changeQty(${item.id}, 1)">+</button>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    function openCartModal() {
+      if (currentUser) {
+        document.getElementById("custName").value = currentUser.name || "";
+        document.getElementById("custEmail").value = currentUser.email || "";
+        document.getElementById("custPhone").value = currentUser.phone || "";
+        document.getElementById("custAddress").value = currentUser.address || "Accra, Ghana";
+      } else {
+        document.getElementById("custAddress").value = "Accra, Ghana";
+      }
+      renderCartItems();
+      const status = document.getElementById("checkoutStatus");
+      status.className = "status-msg";
+      status.textContent = "";
+      openModal("cartModal");
+    }
+
+    function processCheckout() {
+      const status = document.getElementById("checkoutStatus");
+      if (!cart.length) {
+        status.className = "status-msg error";
+        status.textContent = "Please add at least one Alma Shades item to your cart first.";
+        return;
+      }
+
+      const name = document.getElementById("custName").value.trim();
+      const email = document.getElementById("custEmail").value.trim();
+      const phone = document.getElementById("custPhone").value.trim();
+      const address = document.getElementById("custAddress").value.trim();
+      const method = document.querySelector('input[name="payMethod"]:checked').value;
+
+      if (!name || !email || !phone || !address) {
+        status.className = "status-msg error";
+        status.textContent = "Please fill in your name, email, phone/MoMo number, and delivery location.";
+        return;
+      }
+
+      const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+      const amountPesewas = totalUnits * DEFAULT_PAYSTACK_UNIT_GHS * 100;
+
+      if (method === "cod") {
+        finalizeOrder("Pay on Delivery (Pending)", name, email, phone, address);
+        return;
+      }
+
+      if (typeof PaystackPop === "undefined" || PAYSTACK_PUBLIC_KEY.includes("replace_with_your")) {
+        status.className = "status-msg error";
+        status.textContent =
+          "Configure your Paystack public key in PAYSTACK_PUBLIC_KEY to launch live MTN MoMo / Telecel Cash / Card checkout, or choose Pay on Delivery.";
+        return;
+      }
+
+      const handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email,
+        amount: amountPesewas,
+        currency: "GHS",
+        ref: "ALMA_" + Date.now(),
+        metadata: {
+          custom_fields: [
+            { display_name: "Customer Name", variable_name: "customer_name", value: name },
+            { display_name: "Phone / MoMo", variable_name: "phone", value: phone },
+            { display_name: "Delivery Address", variable_name: "address", value: address },
+            { display_name: "Items", variable_name: "items", value: cart.map((i) => `${i.name} (x${i.qty})`).join(", ") }
+          ]
+        },
+        callback: function (response) {
+          finalizeOrder("Paid via Paystack (" + response.reference + ")", name, email, phone, address);
+        },
+        onClose: function () {
+          status.className = "status-msg error";
+          status.textContent = "Payment window closed before completion.";
+        }
+      });
+      handler.openIframe();
+    }
+
+    function finalizeOrder(paymentStatus, name, email, phone, address) {
+      const order = {
+        id: "ORD-" + Math.floor(100000 + Math.random() * 900000),
+        date: new Date().toLocaleDateString(),
+        customer: name,
+        email,
+        phone,
+        address,
+        items: [...cart],
+        status: paymentStatus
+      };
+      orders.unshift(order);
+      cart = [];
+      saveState();
+      updateCartCount();
+      renderCartItems();
+
+      const status = document.getElementById("checkoutStatus");
+      status.className = "status-msg success";
+      status.textContent = `Order ${order.id} confirmed! Status: ${paymentStatus}.`;
+    }
+
+    /* Admin Control with Photo Upload + Story/Write-up Editor */
+    function openAdminModal() {
+      renderAdminPanel();
+      openModal("adminModal");
+    }
+
+    function compressImageFile(file, maxWidth, callback) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          const scale = Math.min(1, maxWidth / img.width);
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          callback(canvas.toDataURL("image/jpeg", 0.82));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleProductPhotoFile(input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      compressImageFile(file, 900, (dataUrl) => {
+        uploadedProductDataUrl = dataUrl;
+        const preview = document.getElementById("prodPhotoPreview");
+        if (preview) {
+          preview.src = dataUrl;
+          preview.style.display = "block";
+        }
+      });
+    }
+
+    function handleLookbookPhotoFile(input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      compressImageFile(file, 900, (dataUrl) => {
+        uploadedLookbookDataUrl = dataUrl;
+        const preview = document.getElementById("lookPhotoPreview");
+        if (preview) {
+          preview.src = dataUrl;
+          preview.style.display = "block";
+        }
+      });
+    }
+
+    function renderAdminPanel(activeTab = "shades") {
+      const container = document.getElementById("adminContent");
+      uploadedProductDataUrl = "";
+      uploadedLookbookDataUrl = "";
+
+      if (!isAdminAuthenticated) {
+        container.innerHTML = `
+          <p style="font-size: 0.86rem; color: var(--muted); margin-bottom: 0.9rem;">
+            Restricted to authorized Alma Shades administrator.
+          </p>
+          <div class="form-group">
+            <label for="adminUser">Admin Username</label>
+            <input type="text" id="adminUser" autocomplete="username" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="adminPass">Admin Password</label>
+            <input type="password" id="adminPass" autocomplete="current-password" placeholder="" />
+          </div>
+          <button onclick="loginAdmin()">Sign In to Admin Control</button>
+          <div id="adminAuthMsg" class="status-msg"></div>
+        `;
+        return;
+      }
+
+      const headerBar = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--success);">Signed in as ${ADMIN_USERNAME}</span>
+          <button class="secondary" onclick="logoutAdmin()">Sign Out</button>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn ${activeTab === "shades" ? "active" : ""}" onclick="renderAdminPanel('shades')">Add / Manage Shades</button>
+          <button class="tab-btn ${activeTab === "gallery" ? "active" : ""}" onclick="renderAdminPanel('gallery')">Add Photo &amp; Write-Up</button>
+        </div>
+      `;
+
+      if (activeTab === "gallery") {
+        container.innerHTML = `
+          ${headerBar}
+          <p style="font-size: 0.83rem; color: var(--muted); margin-bottom: 0.85rem;">
+            Upload your own photo from your device (or paste a link) and write a caption/story. The text appears neatly below the picture.
+          </p>
+          <div class="form-group">
+            <label for="lookTitle">Photo Title *</label>
+            <input type="text" id="lookTitle" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="lookTag">Small Label / Subtitle</label>
+            <input type="text" id="lookTag" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="lookCat">Link to Collection</label>
+            <select id="lookCat">
+              <option value="all">All Alma Shades</option>
+              <option value="Sun Shades">Sun Shades</option>
+              <option value="Blue-Light">Blue-Light</option>
+              <option value="Photochromic">Photochromic</option>
+              <option value="Sport & Active">Sport &amp; Active</option>
+              <option value="Classic & Vintage">Classic &amp; Vintage</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lookFile">Upload Picture from Device</label>
+            <input type="file" id="lookFile" accept="image/*" onchange="handleLookbookPhotoFile(this)" />
+            <img id="lookPhotoPreview" class="preview-thumb" alt="Uploaded photo preview" />
+          </div>
+          <div class="form-group">
+            <label for="lookImgUrl">Or Paste Image URL</label>
+            <input type="url" id="lookImgUrl" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="lookStory">Write Something About This Picture *</label>
+            <textarea id="lookStory" placeholder=""></textarea>
+          </div>
+          <button onclick="adminAddLookbook()">Publish Photo &amp; Write-Up</button>
+          <div id="adminLookMsg" class="status-msg"></div>
+
+          <h4 style="margin: 1.25rem 0 0.5rem; font-weight: 800;">Published Photo Stories</h4>
+          ${lookbook
+            .map(
+              (item) => `
+              <div class="cart-item">
+                <div>
+                  <strong>${escapeHtml(item.title)}</strong> <small style="color: var(--muted);">(${escapeHtml(item.tag)})</small><br />
+                  <small style="color: var(--muted);">${escapeHtml(item.story || "")}</small>
+                </div>
+                <button class="secondary" onclick="adminDeleteLookbook(${item.id})">Delete</button>
+              </div>
+            `
+            )
+            .join("")}
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        ${headerBar}
+        <div class="admin-stat-box">
+          <span>Total Catalog Shades</span>
+          <strong>${products.length} Items</strong>
+        </div>
+
+        <h4 style="margin-bottom: 0.6rem; font-weight: 800;">Add New Shade</h4>
+        <div class="form-group">
+          <label for="newProdName">Shade / Item Name *</label>
+          <input type="text" id="newProdName" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label for="newProdCat">Category</label>
+          <select id="newProdCat">
+            <option value="Sun Shades">Sun Shades</option>
+            <option value="Blue-Light">Blue-Light</option>
+            <option value="Photochromic">Photochromic</option>
+            <option value="Sport & Active">Sport &amp; Active</option>
+            <option value="Classic & Vintage">Classic &amp; Vintage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="newProdBadge">Badge</label>
+          <input type="text" id="newProdBadge" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label for="newProdFile">Upload Picture from Device</label>
+          <input type="file" id="newProdFile" accept="image/*" onchange="handleProductPhotoFile(this)" />
+          <img id="prodPhotoPreview" class="preview-thumb" alt="Shade photo preview" />
+        </div>
+        <div class="form-group">
+          <label for="newProdImg">Or Paste Image URL</label>
+          <input type="url" id="newProdImg" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label for="newProdDesc">Write About This Shade</label>
+          <textarea id="newProdDesc" placeholder=""></textarea>
+        </div>
+        <button onclick="adminAddProduct()">Add Shade to Catalog</button>
+        <div id="adminMsg" class="status-msg"></div>
+
+        <h4 style="margin: 1.25rem 0 0.5rem; font-weight: 800;">Catalog Management</h4>
+        ${products
+          .map(
+            (p) => `
+            <div class="cart-item">
+              <div><strong>${escapeHtml(p.name)}</strong> <small style="color: var(--muted);">(${escapeHtml(p.category)})</small></div>
+              <div style="display:flex;gap:.4rem;">
+                <button class="secondary" onclick="adminEditProduct(${p.id})">Edit</button>
+                <button class="secondary" onclick="adminDeleteProduct(${p.id})">Delete</button>
+              </div>
+            </div>
+          `
+          )
+          .join("")}
+      `;
+    }
+
+    function loginAdmin() {
+      const u = document.getElementById("adminUser").value.trim();
+      const p = document.getElementById("adminPass").value;
+      const msg = document.getElementById("adminAuthMsg");
+
+      if (u === ADMIN_USERNAME && p === ADMIN_PASSWORD) {
+        isAdminAuthenticated = true;
+        sessionStorage.setItem(STORAGE_KEYS.adminLoggedIn, "true");
+        renderAdminPanel("shades");
+      } else {
+        msg.className = "status-msg error";
+        msg.textContent = "Invalid admin credentials.";
+      }
+    }
+
+    function logoutAdmin() {
+      isAdminAuthenticated = false;
+      sessionStorage.removeItem(STORAGE_KEYS.adminLoggedIn);
+      renderAdminPanel();
+    }
+
+    function adminAddProduct() {
+      const name = document.getElementById("newProdName").value.trim();
+      const category = document.getElementById("newProdCat").value;
+      const badge = document.getElementById("newProdBadge").value.trim() || "Alma Edition";
+      const image =
+        uploadedProductDataUrl ||
+        document.getElementById("newProdImg").value.trim() ||
+        "https://static.zennioptical.com/production/products/general/44/60/4460125-eyeglasses-front-view.jpg";
+      const desc =
+        document.getElementById("newProdDesc").value.trim() ||
+        "Protective sea-blue eyewear crafted by Alma Shades.";
+      const msg = document.getElementById("adminMsg");
+
+      if (!name) {
+        msg.className = "status-msg error";
+        msg.textContent = "Please enter a shade name.";
+        return;
+      }
+
+      products.unshift({ id: Date.now(), name, category, badge, image, desc });
+      saveState();
+      renderProducts();
+      renderAdminPanel("shades");
+    }
+
+    function adminDeleteProduct(id) {
+      products = products.filter((p) => p.id !== id);
+      saveState();
+      renderProducts();
+      renderAdminPanel("shades");
+    }
+
+    function adminEditProduct(id) {
+      const product = products.find((p) => p.id === id);
+      if (!product) return;
+
+      const name = window.prompt("Shade name", product.name);
+      if (name === null) return;
+      const badge = window.prompt("Badge", product.badge);
+      if (badge === null) return;
+      const image = window.prompt("Product glasses image URL", product.image);
+      if (image === null) return;
+      const desc = window.prompt("Product description", product.desc);
+      if (desc === null) return;
+
+      product.name = name.trim() || product.name;
+      product.badge = badge.trim() || product.badge;
+      product.image = image.trim() || product.image;
+      product.desc = desc.trim() || product.desc;
+
+      saveState();
+      renderProducts();
+      renderAdminPanel("shades");
+    }
+
+    function adminAddLookbook() {
+      const title = document.getElementById("lookTitle").value.trim();
+      const tag = document.getElementById("lookTag").value.trim() || "Alma Shades Feature";
+      const category = document.getElementById("lookCat").value;
+      const story = document.getElementById("lookStory").value.trim();
+      const image =
+        uploadedLookbookDataUrl ||
+        document.getElementById("lookImgUrl").value.trim() ||
+        "https://static.zennioptical.com/production/products/general/44/60/4460125-eyeglasses-front-view.jpg";
+      const msg = document.getElementById("adminLookMsg");
+
+      if (!title || !story) {
+        msg.className = "status-msg error";
+        msg.textContent = "Please enter a title and write something about the picture.";
+        return;
+      }
+
+      lookbook.unshift({ id: Date.now(), tag, title, category, story, image });
+      saveState();
+      renderLookbook();
+      renderAdminPanel("gallery");
+    }
+
+    function adminDeleteLookbook(id) {
+      lookbook = lookbook.filter((item) => item.id !== id);
+      saveState();
+      renderLookbook();
+      renderAdminPanel("gallery");
+    }
+
+    /* Customer Account */
+    function openAccountModal(tab = "login") {
+      openModal("accountModal");
+      switchAccountTab(tab);
+    }
+
+    function switchAccountTab(tab) {
+      const tabButtons = document.querySelectorAll("#authTabs .tab-btn");
+      const labels = ["login", "register", "lost", "orders", "addresses"];
+      tabButtons.forEach((btn, idx) => btn.classList.toggle("active", labels[idx] === tab));
+
+      const content = document.getElementById("accountTabContent");
+
+      if (tab === "login") {
+        content.innerHTML = currentUser
+          ? `
+            <p style="margin-bottom: 0.75rem;">Signed in as <strong>${escapeHtml(currentUser.name)}</strong> (${escapeHtml(currentUser.email)})</p>
+            <button class="secondary" onclick="logoutUser()">Logout</button>
+          `
+          : `
+            <div class="form-group">
+              <label for="loginEmail">Email Address</label>
+              <input type="email" id="loginEmail" placeholder="" />
+            </div>
+            <div class="form-group">
+              <label for="loginPass">Password</label>
+              <input type="password" id="loginPass" placeholder="" />
+            </div>
+            <button onclick="loginUser()">Login</button>
+            <div id="accMsg" class="status-msg"></div>
+          `;
+      } else if (tab === "register") {
+        content.innerHTML = `
+          <div class="form-group">
+            <label for="regName">Full Name</label>
+            <input type="text" id="regName" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Phone / MoMo Number</label>
+            <input type="tel" id="regPhone" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="regPass">Password</label>
+            <input type="password" id="regPass" placeholder="" />
+          </div>
+          <button onclick="registerUser()">Create Account</button>
+          <div id="accMsg" class="status-msg"></div>
+        `;
+      } else if (tab === "lost") {
+        content.innerHTML = `
+          <p style="font-size: 0.86rem; color: var(--muted); margin-bottom: 0.75rem;">
+            Enter your account email to receive password reset instructions.
+          </p>
+          <div class="form-group">
+            <label for="lostEmail">Email Address</label>
+            <input type="email" id="lostEmail" placeholder="" />
+          </div>
+          <button onclick="resetPassword()">Send Reset Link</button>
+          <div id="accMsg" class="status-msg"></div>
+        `;
+      } else if (tab === "orders") {
+        if (!orders.length) {
+          content.innerHTML = "<p style='color: var(--muted);'>No orders placed yet.</p>";
+        } else {
+          content.innerHTML = orders
+            .map(
+              (o) => `
+              <div class="cart-item">
+                <div>
+                  <strong>${escapeHtml(o.id)}</strong> &bull; <small>${escapeHtml(o.date)}</small><br />
+                  <small>${o.items.map((i) => `${escapeHtml(i.name)} x${i.qty}`).join(", ")}</small><br />
+                  <small style="color: var(--sea); font-weight: 700;">${escapeHtml(o.status)}</small>
+                </div>
+              </div>
+            `
+            )
+            .join("");
+        }
+      } else if (tab === "addresses") {
+        const savedAddr = (currentUser && currentUser.address) || "Accra, Ghana";
+        content.innerHTML = `
+          <div class="form-group">
+            <label for="addrInput">Default Delivery Address</label>
+            <input type="text" id="addrInput" value="${escapeHtml(savedAddr)}" />
+          </div>
+          <button onclick="saveAddress()">Save Address</button>
+          <div id="accMsg" class="status-msg"></div>
+        `;
+      } else {
+        content.innerHTML = "<p style='color: var(--muted);'>No downloadable digital items available for this account.</p>";
+      }
+    }
+
+    function registerUser() {
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const phone = document.getElementById("regPhone").value.trim();
+      const pass = document.getElementById("regPass").value;
+      const msg = document.getElementById("accMsg");
+
+      if (!name || !email || !pass) {
+        msg.className = "status-msg error";
+        msg.textContent = "Please complete name, email, and password.";
+        return;
+      }
+
+      currentUser = { name, email, phone, password: pass, address: "Accra, Ghana" };
+      saveState();
+      document.getElementById("accountBtn").textContent = name.split(" ")[0];
+      msg.className = "status-msg success";
+      msg.textContent = "Account created and signed in.";
+    }
+
+    function loginUser() {
+      const email = document.getElementById("loginEmail").value.trim();
+      const pass = document.getElementById("loginPass").value;
+      const msg = document.getElementById("accMsg");
+
+      if (currentUser && currentUser.email === email && currentUser.password === pass) {
+        document.getElementById("accountBtn").textContent = currentUser.name.split(" ")[0];
+        switchAccountTab("login");
+      } else if (email && pass) {
+        currentUser = { name: email.split("@")[0], email, phone: "", password: pass, address: "Accra, Ghana" };
+        saveState();
+        document.getElementById("accountBtn").textContent = currentUser.name;
+        switchAccountTab("login");
+      } else {
+        msg.className = "status-msg error";
+        msg.textContent = "Enter your email and password.";
+      }
+    }
+
+    function logoutUser() {
+      currentUser = null;
+      saveState();
+      document.getElementById("accountBtn").textContent = "Login";
+      switchAccountTab("login");
+    }
+
+    function resetPassword() {
+      const email = document.getElementById("lostEmail").value.trim();
+      const msg = document.getElementById("accMsg");
+      if (!email) {
+        msg.className = "status-msg error";
+        msg.textContent = "Please enter your email address.";
+        return;
+      }
+      msg.className = "status-msg success";
+      msg.textContent = `Password reset instructions sent to ${email}.`;
+    }
+
+    function saveAddress() {
+      const addr = document.getElementById("addrInput").value.trim();
+      if (!currentUser) {
+        currentUser = { name: "Customer", email: "", phone: "", address: addr || "Accra, Ghana" };
+      } else {
+        currentUser.address = addr || "Accra, Ghana";
+      }
+      saveState();
+      const msg = document.getElementById("accMsg");
+      msg.className = "status-msg success";
+      msg.textContent = "Default address saved.";
+    }
+
+    function shareProduct(id) {
+      const prod = products.find((p) => p.id === id);
+      const shareText = `${prod ? prod.name : "Alma Shades"} — Alma Shades Eyewear`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareText).catch(() => {});
+      }
+      openInfoModal("Share Alma Shades", `Copied "${shareText}" to clipboard.`);
+    }
+
+    let viewerScale = 1;
+
+    function handleProductImageClick(event, src, title) {
+      openImageViewer(src, title);
+    }
+    let viewerDrag = null;
+
+    function startViewerDrag(event) {
+      if (event.target.closest("button")) return;
+      const stage = event.currentTarget;
+      stage.classList.add("is-dragging");
+      const angle = parseFloat(stage.style.getPropertyValue("--viewer-y")) || 0;
+      viewerDrag = { stage, x: event.clientX, angle };
+      stage.setPointerCapture(event.pointerId);
+    }
+
+    function moveViewerDrag(event) {
+      if (!viewerDrag) return;
+      const dx = event.clientX - viewerDrag.x;
+      const angle = ((viewerDrag.angle + dx * 0.75) % 360 + 360) % 360;
+      viewerDrag.stage.style.setProperty("--viewer-y", `${angle}deg`);
+    }
+
+    function endViewerDrag(event) {
+      if (!viewerDrag) return;
+      viewerDrag.stage.classList.remove("is-dragging");
+      viewerDrag = null;
+    }
+
+    function openImageViewer(src, title) {
+      const modal = document.getElementById("imageViewerModal");
+      const stage = document.getElementById("imageViewerStage");
+      const image = document.getElementById("imageViewerImage");
+      document.getElementById("imageViewerTitle").textContent = title;
+      image.src = src;
+      const views = [src, getZenniView(src, 'angle-view'), getZenniView(src, 'side-view'), getZenniView(src, 'tinted-view')];
+      let viewerIndex = 0;
+      stage._viewerViews = views;
+      stage._viewerIndex = viewerIndex;
+      image.alt = title;
+      stage.classList.remove("dark");
+      viewerScale = 1;
+      stage.style.setProperty("--viewer-scale", "1");
+      stage.style.setProperty("--viewer-y", "0deg");
+      openModal("imageViewerModal");
+    }
+
+    function stepViewerView(delta) {
+      const stage = document.getElementById("imageViewerStage");
+      const image = document.getElementById("imageViewerImage");
+      const views = stage._viewerViews || [image.src];
+      stage._viewerIndex = ((stage._viewerIndex || 0) + delta + views.length) % views.length;
+      image.src = views[stage._viewerIndex];
+    }
+
+    function changeViewerZoom(delta) {
+      viewerScale = Math.min(3, Math.max(0.75, viewerScale + delta));
+      document.getElementById("imageViewerStage").style.setProperty("--viewer-scale", viewerScale);
+    }
+
+    function resetViewerZoom() {
+      viewerScale = 1;
+      const stage = document.getElementById("imageViewerStage");
+      stage.style.setProperty("--viewer-scale", "1");
+      stage.style.setProperty("--viewer-y", "0deg");
+    }
+
+    function rotateViewer(delta) {
+      const stage = document.getElementById("imageViewerStage");
+      const current = parseFloat(stage.style.getPropertyValue("--viewer-y")) || 0;
+      stage.style.setProperty("--viewer-y", `${(current + delta) % 360}deg`);
+    }
+
+    function handleViewerWheel(event) {
+      event.preventDefault();
+      changeViewerZoom(event.deltaY < 0 ? 0.15 : -0.15);
+    }
+
+    function toggleViewerDoubleZoom() {
+      viewerScale = viewerScale === 1 ? 2 : 1;
+      document.getElementById("imageViewerStage").style.setProperty("--viewer-scale", viewerScale);
+    }
+
+    function toggleViewerBackground() {
+      const stage = document.getElementById("imageViewerStage");
+      const button = document.getElementById("viewerBackgroundBtn");
+      const isDark = stage.classList.toggle("dark");
+      button.textContent = isDark ? "White Background" : "Black Background";
+    }
+
+    function openInfoModal(title, body) {
+      document.getElementById("infoTitle").textContent = title;
+      document.getElementById("infoBody").textContent = body;
+      openModal("infoModal");
+    }
+
+    function openCookieModal() {
+      openModal("cookieModal");
+    }
+
+    function saveCookiePrefs(acceptAll) {
+      const prefs = {
+        necessary: true,
+        functional: acceptAll ? true : document.getElementById("ckFunctional").checked,
+        analytical: acceptAll ? true : document.getElementById("ckAnalytical").checked,
+        ads: acceptAll ? true : document.getElementById("ckAds").checked
+      };
+      localStorage.setItem(STORAGE_KEYS.cookies, JSON.stringify(prefs));
+      document.getElementById("cookieBanner").classList.add("hidden");
+      closeModal("cookieModal");
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      el.classList.add("open");
+      el.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      el.classList.remove("open");
+      el.setAttribute("aria-hidden", "true");
+    }
+
+    document.querySelectorAll(".overlay").forEach((overlay) => {
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
+    });
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function escapeJs(str) {
+      return String(str || "").replace(/'/g, "\\'");
+    }
+
+    // Initial boot
+    if (localStorage.getItem(STORAGE_KEYS.cookies)) {
+      document.getElementById("cookieBanner").classList.add("hidden");
+    }
+    if (currentUser && currentUser.name) {
+      document.getElementById("accountBtn").textContent = currentUser.name.split(" ")[0];
+    }
+    updateCartCount();
+    renderLookbook();
+    renderProducts();
+  </script>
+</body>
+</html>

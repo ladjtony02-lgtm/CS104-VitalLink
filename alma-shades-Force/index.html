@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alma Shades — Protective Eye Care Eyewear</title>
+  <!-- Paystack Inline SDK for MTN MoMo, Telecel Cash & Card Payments -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <style>
+    :root {
+      --bg: #fdfbf9;
+      --surface: #f7efe8;
+      --surface-alt: #eeddd0;
+      --text: #1c1411;
+      --muted: #5c4b43;
+      --burnt: #9a3412;         /* Rich Burnt Sienna */
+      --burnt-dark: #6c220b;    /* Deep Burnt Espresso */
+      --burnt-glow: #c2410c;    /* Warm Burnt Orange Highlight */
+      --border: #e2cfc2;
+      --danger: #b42318;
+      --success: #067647;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: var(--burnt-dark);
+      color: #fff7ed;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.55rem 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* Sticky Header & Dropdown Navigation */
+    header {
+      border-bottom: 2px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(253, 251, 249, 0.97);
+      backdrop-filter: blur(8px);
+      z-index: 20;
+    }
+
+    .nav-container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.45rem;
+      text-decoration: none;
+      color: var(--text);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--burnt-glow);
+      font-weight: 900;
+    }
+
+    nav > ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.35rem 0;
+      display: inline-block;
+      transition: color 0.15s ease;
+    }
+
+    nav a:hover {
+      color: var(--burnt-glow);
+    }
+
+    /* Collections Dropdown Menu */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 215px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(28, 20, 17, 0.12);
+      padding: 0.5rem 0;
+      list-style: none;
+      z-index: 30;
+    }
+
+    nav li:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--surface);
+      color: var(--burnt);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      cursor: pointer;
+      border: 1.5px solid var(--burnt);
+      background: var(--burnt);
+      color: #fff;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: all 0.15s ease;
+    }
+
+    button:hover {
+      background: var(--burnt-dark);
+      border-color: var(--burnt-dark);
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    button.secondary:hover {
+      background: var(--surface);
+      border-color: var(--burnt);
+    }
+
+    button.admin-trigger {
+      background: var(--text);
+      border-color: var(--text);
+      color: #ffedd5;
+    }
+
+    button.admin-trigger:hover {
+      background: var(--burnt-dark);
+      border-color: var(--burnt-dark);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #2a1710 0%, #6c220b 55%, #9a3412 100%);
+      color: #fff7ed;
+      border-radius: 12px;
+      padding: 3rem 1.75rem;
+      text-align: center;
+      margin-bottom: 2.25rem;
+      box-shadow: 0 14px 32px rgba(108, 34, 11, 0.18);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fed7aa;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-banner h1 {
+      font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-banner p {
+      color: #ffedd5;
+      max-width: 640px;
+      margin: 0 auto 1.4rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-banner button {
+      background: #fff7ed;
+      color: var(--burnt-dark);
+      border-color: #fff7ed;
+      font-weight: 800;
+      padding: 0.7rem 1.4rem;
+    }
+
+    .hero-banner button:hover {
+      background: #fed7aa;
+    }
+
+    /* Filter Toolbar */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .categories {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      font-weight: 700;
+    }
+
+    .cat-btn.active {
+      background: var(--burnt);
+      color: #fff;
+      border-color: var(--burnt);
+    }
+
+    .search-input {
+      padding: 0.55rem 0.95rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      min-width: 245px;
+      background: #fff;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--burnt);
+    }
+
+    /* Product Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.9rem;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--burnt);
+      box-shadow: 0 10px 24px rgba(154, 52, 18, 0.1);
+    }
+
+    .card-img {
+      height: 180px;
+      background: var(--surface);
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      top: 0.65rem;
+      left: 0.65rem;
+      background: var(--burnt-dark);
+      color: #fff7ed;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.24rem 0.55rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+      z-index: 2;
+    }
+
+    .share-icon {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.65rem;
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.22rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .card-meta {
+      font-size: 0.76rem;
+      color: var(--burnt-glow);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card h2 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      margin: 0.25rem 0 0.4rem;
+      color: var(--text);
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1.5px solid var(--border);
+    }
+
+    .price {
+      font-weight: 900;
+      font-size: 1.08rem;
+      color: var(--burnt-dark);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 2px solid var(--border);
+      background: var(--surface);
+      margin-top: 4rem;
+      padding: 2.75rem 1.25rem 1.5rem;
+    }
+
+    .footer-grid {
+      max-width: 1220px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--burnt-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    footer a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    footer a:hover {
+      color: var(--burnt);
+      text-decoration: underline;
+    }
+
+    .copyright {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding-top: 1.1rem;
+      border-top: 1.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* Modals & Drawers */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 20, 17, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+      padding: 1rem;
+    }
+
+    .overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 16px 36px rgba(28, 20, 17, 0.24);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-weight: 800;
+      color: var(--burnt-dark);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .tab-btn.active {
+      background: var(--burnt);
+      color: #fff;
+      border-color: var(--burnt);
+    }
+
+    .form-group {
+      margin-bottom: 0.85rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.58rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      gap: 0.5rem;
+    }
+
+    .payment-box {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .status-msg {
+      margin-top: 0.75rem;
+      padding: 0.7rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: none;
+    }
+
+    .status-msg.success {
+      display: block;
+      background: #ecfdf3;
+      color: var(--success);
+      border: 1px solid #abefc6;
+    }
+
+    .status-msg.error {
+      display: block;
+      background: #fef3f2;
+      color: var(--danger);
+      border: 1px solid #fecdca;
+    }
+
+    .admin-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      border-radius: 6px;
+    }
+
+    .admin-stat span {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .admin-stat strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--burnt-dark);
+    }
+
+    /* Cookie Consent Banner */
+    .cookie-banner {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1.5px solid var(--burnt);
+      box-shadow: 0 10px 26px rgba(28, 20, 17, 0.16);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      z-index: 35;
+    }
+
+    .cookie-banner p {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--muted);
+      flex: 1 1 320px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    ALMA SHADES &bull; UV400 &amp; BLUE-LIGHT CERTIFIED EYE CARE &bull; FREE DELIVERY IN ACCRA &amp; KASOA OVER GHS 400
+  </div>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">ALMA <span>SHADES</span></a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#shop" onclick="filterByCategory('all')">Home</a></li>
+          <li><a href="#shop" onclick="filterByCategory('all')">Shop</a></li>
+          <li>
+            <a href="#collections">Collections &#9662;</a>
+            <ul class="dropdown-menu">
+              <li><a href="#collections" onclick="filterByCategory('Polarized Sun')">Polarized Sun</a></li>
+              <li><a href="#collections" onclick="filterByCategory('Blue-Light')">Blue-Light Care</a></li>
+              <li><a href="#collections" onclick="filterByCategory('Photochromic')">Photochromic Lenses</a></li>
+              <li><a href="#collections" onclick="filterByCategory('Driving')">Night &amp; Glare Driving</a></li>
+              <li><a href="#collections" onclick="filterByCategory('Care Kits')">Accessories &amp; Care Kits</a></li>
+            </ul>
+          </li>
+          <li><a href="#about" onclick="openInfoModal('About Alma Shades', 'Alma Shades is owned and operated by Alma Shades Ghana. Every frame is engineered for UV400 sun defense, blue-light digital strain relief, and everyday bold style.')">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="secondary" id="accountBtn" onclick="openAccountModal('login')">My Account</button>
+        <button id="openCartBtn" onclick="openCartModal()">Cart (<span id="cartCount">0</span>)</button>
+        <button class="admin-trigger" id="adminBtn" onclick="openAdminModal()">Admin Control</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="shop">
+    <section class="hero-banner">
+      <span class="hero-tag">Alma Shades Official Store</span>
+      <h1>Bold Eye Care Shades Built for Sun Glare &amp; Digital Screens</h1>
+      <p>
+        Owned and curated by Alma Shades. Protect your vision with polarized UV400 lenses, photochromic transitions, and anti-fatigue blue-light eyewear.
+      </p>
+      <button onclick="document.getElementById('collections').scrollIntoView({behavior: 'smooth'})">
+        Shop Alma Shades
+      </button>
+    </section>
+
+    <div class="toolbar" id="collections">
+      <div class="categories" role="tablist" aria-label="Eyewear categories">
+        <button class="cat-btn active" data-category="all">All</button>
+        <button class="cat-btn" data-category="Polarized Sun">Polarized Sun</button>
+        <button class="cat-btn" data-category="Blue-Light">Blue-Light</button>
+        <button class="cat-btn" data-category="Photochromic">Photochromic</button>
+        <button class="cat-btn" data-category="Driving">Driving</button>
+        <button class="cat-btn" data-category="Care Kits">Care Kits</button>
+      </div>
+      <input
+        type="search"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search Alma Shades..."
+        aria-label="Search shades"
+      />
+    </div>
+
+    <div class="grid" id="productGrid"></div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div id="contact">
+        <h3>Alma Shades</h3>
+        <ul>
+          <li>Owned by Alma Shades</li>
+          <li>Kasoa &amp; Accra, Ghana</li>
+          <li>support@almashades.com</li>
+          <li>+233 (0) 20 000 0000</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a onclick="openAccountModal('orders')">Orders</a></li>
+          <li><a onclick="openAccountModal('downloads')">Lens Care Guides (Downloads)</a></li>
+          <li><a onclick="openAccountModal('addresses')">Addresses</a></li>
+          <li><a onclick="openAccountModal('details')">Account details</a></li>
+          <li><a onclick="openAccountModal('lost')">Lost password</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Delivery</h3>
+        <ul>
+          <li><a onclick="openInfoModal('How Delivery Works', 'Orders placed before 2:00 PM in Accra and Kasoa qualify for same-day rider dispatch. Regional orders arrive within 24–48 hours.')">How it works</a></li>
+          <li><a onclick="openInfoModal('Free Delivery', 'Enjoy free rider delivery across Accra and Kasoa on all Alma Shades orders totaling GHS 400 or more.')">Free Delivery</a></li>
+          <li><a onclick="openInfoModal('Delivery FAQ', 'You will receive an SMS/WhatsApp confirmation as soon as your Alma Shades dispatch rider sets off.')">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a onclick="openInfoModal('Contact Alma Shades', 'Email support@almashades.com or call +233 (0) 20 000 0000 Monday to Saturday, 9:00 AM – 6:00 PM.')">Contact us</a></li>
+          <li><a onclick="openInfoModal('Shipping & Returns', 'Unworn Alma Shades in original packaging may be exchanged within 7 days of delivery.')">Shipping &amp; Returns</a></li>
+          <li><a onclick="openInfoModal('Refund Policy', 'Approved refunds are processed back to your Mobile Money wallet or card within 48 business hours.')">Refund Policy</a></li>
+          <li><a onclick="openCookieModal()">Cookie Preferences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; 2026 Alma Shades | Owned by Alma Shades | All Rights Reserved</span>
+      <span>Payments secured via Paystack (MoMo &amp; Cards)</span>
+    </div>
+  </footer>
+
+  <!-- Admin Control Modal (Restricted to Almashades / almashades2026) -->
+  <div class="overlay" id="adminModal" aria-
