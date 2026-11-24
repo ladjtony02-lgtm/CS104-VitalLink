@@ -1667,7 +1667,7 @@
                   data-side="${escapeHtml(getZenniView(p.image, 'side-view'))}"
                   data-tinted="${escapeHtml(getZenniView(p.image, 'tinted-view'))}"
                   alt="${escapeHtml(p.name)}"
-                  onclick="handleProductImageClick(event, '${escapeJs(p.image)}', '${escapeJs(p.name)}')"
+                  onclick="event.stopPropagation(); handleProductImageClick(event, this.src, '${escapeJs(p.name)}')"
                   onerror="this.replaceWith(createEyewearFallback('${escapeJs(p.name)}', '#0369a1', '#38bdf8'))"
                 />
               </div>
@@ -2397,6 +2397,7 @@
     let viewerScale = 1;
 
     function handleProductImageClick(event, src, title) {
+      if (event && event.stopPropagation) event.stopPropagation();
       openImageViewer(src, title);
     }
     let viewerDrag = null;
