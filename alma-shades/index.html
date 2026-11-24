@@ -519,15 +519,15 @@
       height: 100%;
       object-fit: contain;
       object-position: center;
-      padding: 0.15rem;
+      padding: 0.6rem;
       background: #f7fafc;
       filter: saturate(1.18) contrast(1.04) drop-shadow(0 10px 10px rgba(5,34,54,.18));
-      transform: scale(1.28);
+      transform: scale(1);
       animation: none;
       transition: transform 0.3s ease;
     }
 
-    .look-card:hover .look-photo img { transform: scale(1.34); }
+    .look-card:hover .look-photo img { transform: scale(1.05); }
 
     .look-caption {
       padding: 0.9rem 1rem;
@@ -1607,11 +1607,16 @@
         .map(
           (item) => `
           <article class="look-card" onclick="filterByCategory('${escapeJs(item.category)}')">
-            <div class="look-photo">
+            <div class="look-photo frame-spin">
               <img
+                class="spin-product-image"
                 src="${escapeHtml(item.image)}"
+                data-front="${escapeHtml(item.image)}"
+                data-angle="${escapeHtml(getZenniView(item.image, 'angle-view'))}"
+                data-side="${escapeHtml(getZenniView(item.image, 'side-view'))}"
+                data-tinted="${escapeHtml(getZenniView(item.image, 'tinted-view'))}"
                 alt="${escapeHtml(item.title)}"
-                onclick="openImageViewer('${escapeJs(item.image)}', '${escapeJs(item.title)}')"
+                onclick="event.stopPropagation(); openImageViewer(this.src, '${escapeJs(item.title)}')"
                 onerror="this.replaceWith(createEyewearFallback('${escapeJs(item.title)}', '#052236', '#0284c7'))"
               />
             </div>
@@ -1624,6 +1629,8 @@
         `
         )
         .join("");
+
+      setupFrameSpin(grid);
     }
 
     function renderProducts() {
