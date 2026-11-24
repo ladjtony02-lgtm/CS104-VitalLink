@@ -1700,11 +1700,15 @@
     function setupFrameSpin(container) {
       const frames = container.querySelectorAll(".frame-spin");
       frames.forEach((frame) => {
+        if (frame.dataset.spinReady === "true") return;
+        frame.dataset.spinReady = "true";
+
         const image = frame.querySelector(".spin-product-image");
         if (!image) return;
         const views = ["front", "angle", "side", "tinted"];
         let index = 0;
         let dragging = false;
+        let didDrag = false;
         let startX = 0;
 
         const showView = (nextIndex) => {
@@ -1722,21 +1726,41 @@
         }, 8000);
         frame._frameTimer = timer;
 
-        frame.onpointerdown = (event) => {
+        frame.addEventListener("pointerdown", (event) => {
           dragging = true;
+          didDrag = false;
           startX = event.clientX;
-          frame.setPointerCapture(event.pointerId);
-        };
-        frame.onpointermove = (event) => {
+          frame.dataset.didDrag = "false";
+          if (frame.setPointerCapture) frame.setPointerCapture(event.pointerId);
+        });
+
+        frame.addEventListener("pointermove", (event) => {
           if (!dragging) return;
           const dx = event.clientX - startX;
           if (Math.abs(dx) >= 45) {
+            didDrag = true;
+            frame.dataset.didDrag = "true";
             showView(index + (dx > 0 ? -1 : 1));
             startX = event.clientX;
           }
+        });
+
+        const endDrag = () => {
+          dragging = false;
+          window.setTimeout(() => {
+            didDrag = false;
+            frame.dataset.didDrag = "false";
+          }, 0);
         };
-        frame.onpointerup = () => { dragging = false; };
-        frame.onpointercancel = () => { dragging = false; };
+        frame.addEventListener("pointerup", endDrag);
+        frame.addEventListener("pointercancel", endDrag);
+
+        frame.addEventListener("click", (event) => {
+          if (didDrag || frame.dataset.didDrag === "true") return;
+          if (event.target && event.target.closest("button")) return;
+          event.stopPropagation();
+          openImageViewer(image.currentSrc || image.src, image.alt || "Eyewear Preview");
+        });
       });
     }
 
