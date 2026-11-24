@@ -996,6 +996,26 @@
       gap: 0.6rem;
     }
 
+    .cart-item-main {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-thumb {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 64px;
+      object-fit: contain;
+      background: #f7fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.2rem;
+      cursor: zoom-in;
+    }
+
     .payment-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -1817,20 +1837,29 @@
       }
 
       container.innerHTML = cart
-        .map(
-          (item) => `
+        .map((item) => {
+          const product = products.find((p) => p.id === item.id);
+          const image = (product && product.image) || "";
+          const title = (product && product.name) || item.name;
+          const thumb = image
+            ? `<img class="cart-item-thumb" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" onclick="openImageViewer('${escapeJs(image)}', '${escapeJs(title)}')" onerror="this.replaceWith(createEyewearFallback('${escapeJs(title)}', '#0369a1', '#38bdf8'))" />`
+            : "";
+          return `
           <div class="cart-item">
-            <div>
-              <strong>${escapeHtml(item.name)}</strong><br />
-              <small style="color: var(--muted);">${escapeHtml(item.category)} &bull; Qty: ${item.qty}</small>
+            <div class="cart-item-main">
+              ${thumb}
+              <div>
+                <strong>${escapeHtml(item.name)}</strong><br />
+                <small style="color: var(--muted);">${escapeHtml(item.category)} &bull; Qty: ${item.qty}</small>
+              </div>
             </div>
             <div style="display: flex; gap: 0.3rem; align-items: center;">
               <button class="secondary" onclick="changeQty(${item.id}, -1)">-</button>
               <button class="secondary" onclick="changeQty(${item.id}, 1)">+</button>
             </div>
           </div>
-        `
-        )
+        `;
+        })
         .join("");
     }
 
