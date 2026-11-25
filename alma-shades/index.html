@@ -906,6 +906,10 @@
       padding: 1rem 1.25rem;
     }
 
+    #imageViewerModal {
+      z-index: 60;
+    }
+
     .overlay.open { display: flex; }
 
     .modal {
@@ -1002,6 +1006,13 @@
       gap: 0.7rem;
       flex: 1;
       min-width: 0;
+      cursor: pointer;
+    }
+
+    .cart-item-main:focus-visible {
+      outline: 2px solid var(--sea);
+      outline-offset: 2px;
+      border-radius: 8px;
     }
 
     .cart-item-thumb {
@@ -1375,7 +1386,7 @@
         <h3 id="imageViewerTitle">Eyewear Preview</h3>
         <button class="secondary" onclick="closeModal('imageViewerModal')">&#10005;</button>
       </div>
-      <div class="image-viewer-stage" id="imageViewerStage" onwheel="handleViewerWheel(event)" ondblclick="toggleViewerDoubleZoom()">
+      <div class="image-viewer-stage" id="imageViewerStage" onwheel="handleViewerWheel(event)" ondblclick="toggleViewerDoubleZoom()" onpointerdown="startViewerDrag(event)" onpointermove="moveViewerDrag(event)" onpointerup="endViewerDrag(event)" onpointercancel="endViewerDrag(event)">
         <img id="imageViewerImage" src="" alt="" />
       </div>
       <div class="viewer-controls">
@@ -1842,11 +1853,14 @@
           const image = (product && product.image) || "";
           const title = (product && product.name) || item.name;
           const thumb = image
-            ? `<img class="cart-item-thumb" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" onclick="openImageViewer('${escapeJs(image)}', '${escapeJs(title)}')" onerror="this.replaceWith(createEyewearFallback('${escapeJs(title)}', '#0369a1', '#38bdf8'))" />`
+            ? `<img class="cart-item-thumb" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" onerror="this.replaceWith(createEyewearFallback('${escapeJs(title)}', '#0369a1', '#38bdf8'))" />`
+            : "";
+          const openViewerAttrs = image
+            ? `role="button" tabindex="0" onclick="openImageViewer('${escapeJs(image)}', '${escapeJs(title)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImageViewer('${escapeJs(image)}', '${escapeJs(title)}');}"`
             : "";
           return `
           <div class="cart-item">
-            <div class="cart-item-main">
+            <div class="cart-item-main" ${openViewerAttrs}>
               ${thumb}
               <div>
                 <strong>${escapeHtml(item.name)}</strong><br />
