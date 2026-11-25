@@ -1781,7 +1781,7 @@
           window.setTimeout(() => {
             didDrag = false;
             frame.dataset.didDrag = "false";
-          }, 0);
+          }, 180);
         };
         frame.addEventListener("pointerup", endDrag);
         frame.addEventListener("pointercancel", endDrag);
@@ -2591,6 +2591,17 @@
         if (e.target === overlay) closeModal(overlay.id);
       });
     });
+
+    document.addEventListener("click", (event) => {
+      const img = event.target.closest(".spin-product-image, .cart-item-thumb");
+      if (!img) return;
+      const frame = img.closest(".frame-spin");
+      if (frame && frame.dataset.didDrag === "true") return;
+      const src = img.currentSrc || img.src;
+      if (!src) return;
+      event.stopPropagation();
+      openImageViewer(src, img.alt || "Eyewear Preview");
+    }, true);
 
     function escapeHtml(str) {
       return String(str || "")
